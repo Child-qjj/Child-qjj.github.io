@@ -1,0 +1,103 @@
+*{    margin:0;
+    padding: 0;
+}
+html,body{
+    background-image: url(../Images/sights04.jpg);
+    background-size: 100%,100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#container{
+    height: 100%;
+}
+div{
+    display: block;
+}
+#slide_content{
+    position: relative;
+    height: 100%;
+}
+#slide_photo{
+    width: 992px;
+    height: 654px;
+    position: relative;
+    margin: 150px auto;
+}
+.cloumn{
+    float: left;
+    text-align: center;
+}
+.midlle{
+    position: relative;
+    width: 50%;
+    height:100%;
+    left:25%;
+    padding: 16px;
+    /* margin-top: -100px; */
+    transform-style: preserve-3d;
+}
+div.slide_img:first-child{
+    background: url("../Images/sights01.jpg") 0% 0% / 100% 100%;
+    background-size:100% 100%;
+}
+div.slide_img:nth-child(2){
+    background: url("../Images/sights02.jpg") 0% 0% / 100% 100%;
+    background-size:100% 100%;
+}
+div.slide_img:nth-child(3){
+    background: url("../Images/sights03.jpg") 0% 0% / 100% 100%;
+    background-size:100% 100%;
+}
+div.slide_img:nth-child(4){
+    background: url("../Images/sights04.jpg") 0% 0% / 100% 100%;
+    background-size:100% 100%;
+}
+.slide_img{
+    top: 25%;
+    left: 33%;
+    margin: 0;
+    box-shadow: 0 0 10px white;
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    border-radius: 40px;
+}
+.cloumn.side{
+    width: 25%;
+    border-radius: 0 3px 3px 0;
+}
+.pre,.next{
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 3s ease;
+}
+ span{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;   
+}
+.next{
+    right: 0;
+}
+.pre{/* 可以省略 默认*/
+    left: 0;
+ }   
+.pre:hover,.next:hover{
+    background-image: linear-gradient(to bottom right, rgb(50, 211, 58),#0077ff);
+    opacity: 0;
+}
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+      width: 100%;
+    }
+  }
