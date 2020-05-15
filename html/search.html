@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>search</title>
+<style>
+    html,body{
+        height:100%;}
+    /*html和body同时设置高度height为100%或自定义值,单独设置无效*/
+    body{margin: 0;}
+    #app{
+        position: relative;
+        height: 100%;
+    }
+    .list{
+        border:solid 2px #4E6EF2;
+        position: absolute;
+        width:544px;
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+        margin-top: -1px;
+    }
+   input.enter{
+       width: 480px;
+      border: 2px solid #c4c7ce;
+      border-radius: 10px 0 0 10px;
+      padding:12px 48px 12px 16px;
+      outline: none;
+    }
+    input.btn{
+    cursor: pointer;
+    width: 108px;
+    height: 44px;
+    line-height: 45px;
+    line-height: 44px\9;
+    padding: 0;
+    background: 0 0;
+    background-color: #4e6ef2;
+    border-radius: 0 10px 10px 0;
+    font-size: 17px;
+    color: #fff;
+    box-shadow: none;
+    font-weight: 400;
+    border: none;
+    outline: 0;
+    }
+    .center{
+    margin: 0 auto;
+    width:661px;
+    height: 100%;
+    }
+    ul{
+    border-top:2px solid #f5f5f6;
+    margin: 0px 14px 0;
+    padding: 8px 0 7px;
+    background: 0 0
+    }
+    ul li span{
+        color: #626675;
+        line-height: 28px;
+    }
+    a{
+    text-decoration: none;
+    position: absolute;
+    color: #9195A3;
+    right: 3px;
+    }
+    li{
+    position: relative;
+    padding: 0;
+    color: #626675;
+    line-height: 28px;
+    font-family: Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+    cursor: pointer;
+    list-style:none;
+    }
+   ul li span:hover{
+        color: #4E6EF2;
+    }
+    a:hover{
+        color: #4E6EF2; 
+    }
+   form span:last-child{
+        position: relative;
+        left: -7px;
+        top: 2px;
+        z-index: 2;
+    }
+    form,form span:first-child{
+        position: relative;
+    }
+    img{
+        width: 270px;
+        height: 129px;
+        left: 50%;
+        margin-left: -135px;
+        bottom: 15px!important;
+        position: absolute;
+    }
+    .img{
+        height: 25%;
+        position: relative;
+        z-index: 0;
+    }
+    [v-cloak]{
+        display: none;
+    }
+</style>
+</head>
+<body>
+<div id="app" @click="show=false">
+  <div class="center">
+    <div class="img"><img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt="借用的百度图片"></div>
+    <form action="form.asp" method="GET" target="_blank">
+        <span><input class="enter" type="text" autocomplete="off"
+        v-model="value"
+        v-bind:style="styleSheet"
+        @focus="show = true"
+        @click.stop
+        v-on:keyup.enter="add"
+        name="form2"
+        ></span>
+       <!-- <input type="hidden" v-for="item in items" style="display: block;"> -->
+      <span><input class="btn" type="submit" value="search"
+       @click="add"> </span></form> 
+    <div class="list" v-show="show" v-cloak v-model="items">
+        <ul><li v-for="item in search(value)"><span>{{item.value}}</span><a v-on:click.stop="del(item.id)">x</a></li></ul>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../Js/s_bar.js"></script>
+</body>
+</html>
