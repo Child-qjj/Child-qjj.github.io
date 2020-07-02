@@ -1,14 +1,89 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Loading</title>
-    </head>
-    <body background="url(../Images/sight01)">
-        <div id="container">
-            <div id="slide_pthoto">
-
-            </div>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to login!</title>
+<link rel="stylesheet" href="./Css/basic.css">
+<link rel="shortcut icon" href="./Images/back1.jpeg" type="image/x-icon">
+<link rel="stylesheet" href="./Css/login.css">
+<style>
+</style>
+</head>
+<body onload="init()">
+<!-- 应该将container设为id的其实 -->
+    <div id="container">
+        <div class="content">
+            <div><h1>Login</h1></div>
+            <div class="shape">
+                <form class="form" name="login" action="http://localhost:3000" method="POST">
+                    <div class="input">
+                        <span class="user">User-Name :<input type="email" name="userName" id="userName" required onchange="getConnect()"></span>
+                        <span class="pass">Password  :<input type="password" name="password" id="password" required></span>
+                    </div>
+                    <div class="btn">
+                        <div class="form_submit"><input type="submit" value="登陆" class="btn_login"></div>
+                        <div class="form_router"><input type="button" value="注册"  class="btn_register"></div>
+                    </div>
+                </form>    
+            </div> 
         </div>
-    </body>
+        <canvas id="show"></canvas>
+    </div>
+    <script src="./Js/snowy.js"></script>
+    <script>
+        function getConnect(){
+            var xmlhttp;
+            let user=document.forms["login"]["userName"].value;
+            if(user.length==""){
+                alert("您的账号未输入");
+                return;
+            }
+            if(window.XMLHttpRequest){
+                xmlhttp=new XMLHttpRequest();
+            }
+            else{
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function (){
+                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                        var content=xmlhttp.responseText;
+                        var obj=JSON.parse(content);
+                        let arr=[];
+                        console.log(obj);
+                        console.log(obj.admin);
+                        console.log(obj.array[0].name);
+                        console.log(obj.admin["429814031@qq.com"]);
+                        for(ob in obj.admin){
+                            arr.push(ob);
+                        }
+                        if(arr.includes(user)){
+                                console.log("Admin name is right!");
+                            }
+                        else alert("用户不存在!!!");
+                     
+                }
+            }
+            xmlhttp.open("GET","http://rap2.taobao.org:38080/app/mock/255427/sale/01",true);
+            xmlhttp.send();
+        }
+/*         function Checked() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            else{
+                xmlhttp=new ActiveXObject("Mircsoft.XMLHTTP");
+            }
+            xmlhttp.open("GET","http://rap2.taobao.org:38080/app/mock/255427/sale/01",false);
+            xmlhttp.onreadystatechange=function () {
+                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                    let userName=document.forms["login"]["userName"].value;
+                    let pass=document.forms["login"]["passsword"].value;
+                }
+            open.send();
+            }
+        } */
+    </script>
+</body>
 </html>

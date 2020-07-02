@@ -1,0 +1,14 @@
+html,body{
+    height: 100%;
+    font-size: 14px;
+    font-family: "微软雅黑",Arial, Helvetica, sans-serif;
+}
+body{
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+#container{
+    height: 100%;
+}
